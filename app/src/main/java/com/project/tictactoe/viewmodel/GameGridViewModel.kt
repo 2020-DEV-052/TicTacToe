@@ -24,4 +24,6 @@ class GameGridViewModel : ViewModel() {
         grid = Grid()
         cells = ObservableArrayMap()
     }
+
+    fun getWinner() {}
 }
