@@ -9,6 +9,23 @@ class Grid {
         currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
     }
 
-    fun areCellsIdenticalInRow() = false
+    fun areCellsIdenticalInRow() : Boolean {
+        for (i in 0 until BOARD_SIZE)
+            if (areCellsIdentical(cells[i][0], cells[i][1], cells[i][2])) {
+                return true
+            }
+        return false
+    }
 
+    private fun areCellsIdentical(vararg cellsInput: Cell?): Boolean {
+        val cell = cellsInput[0]
+        for (i in 1 until cellsInput.size)
+            if (cell != cellsInput[i])
+                return false
+        return true
+    }
+
+    companion object {
+        private const val BOARD_SIZE = 3
+    }
 }
