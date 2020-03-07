@@ -18,4 +18,18 @@ class GridTest {
         assertEquals(Player.X, grid.currentPlayer)
     }
 
+    @Test
+    fun givenX_whenNextPlayer_thenReturnO() {
+        grid.currentPlayer = Player.X
+        grid.switchPlayer()
+        assertEquals(Player.O, grid.currentPlayer)
+    }
+
+    @Test
+    fun givenO_whenNextPlayer_thenReturnX() {
+        grid.currentPlayer = Player.O
+        grid.switchPlayer()
+        assertEquals(Player.X, grid.currentPlayer)
+    }
+
 }

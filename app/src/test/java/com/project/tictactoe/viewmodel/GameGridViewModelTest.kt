@@ -20,4 +20,11 @@ class GameGridViewModelTest {
         assertEquals("X", viewModel.cells["00"])
     }
 
+    @Test
+    fun givenX_whenNextPlayer_thenReturnO() {
+        viewModel.onCellClick(0,0)
+        viewModel.onCellClick(2,0)
+        assertEquals("O", viewModel.cells["20"])
+    }
+
 }
