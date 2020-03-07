@@ -2,6 +2,6 @@ package com.project.tictactoe.model
 
 class Grid {
 
-    var currentPlayer : Player? = null
+    var currentPlayer = Player.X
 
 }
