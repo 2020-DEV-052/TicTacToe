@@ -11,6 +11,8 @@ class Grid {
 
     fun isGameEnded() = areCellsIdenticalInRow() || areVerticalCellsIdentical() || areDiagonalCellsIdentical()
 
+    fun isBoardFilledWithNoResult() = false
+
     fun areCellsIdenticalInRow() : Boolean {
         for (i in 0 until BOARD_SIZE)
             if (areCellsIdentical(cells[i][0], cells[i][1], cells[i][2])) {

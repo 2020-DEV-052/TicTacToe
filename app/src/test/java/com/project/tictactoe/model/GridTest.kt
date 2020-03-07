@@ -199,4 +199,36 @@ class GridTest {
         assertTrue(hasGameEnded)
     }
 
+    @Test
+    fun givenAllCellsAreFilled_thenReturnBoardIsFilled(){
+        grid.cells[0][0] = Cell(Player.X)
+        grid.cells[0][1] = Cell(Player.O)
+        grid.cells[0][2] = Cell(Player.X)
+        grid.cells[1][0] = Cell(Player.O)
+        grid.cells[1][1] = Cell(Player.X)
+        grid.cells[1][2] = Cell(Player.O)
+        grid.cells[2][0] = Cell(Player.X)
+        grid.cells[2][1] = Cell(Player.O)
+        grid.cells[2][2] = Cell(Player.X)
+
+        val isBoardFilled = grid.isBoardFilledWithNoResult()
+        assertTrue(isBoardFilled)
+    }
+
+    @Test
+    fun givenAllCellsAreFilledWithNoResult_thenEndGame(){
+        grid.cells[0][0] = Cell(Player.X)
+        grid.cells[0][1] = Cell(Player.O)
+        grid.cells[0][2] = Cell(Player.X)
+        grid.cells[1][0] = Cell(Player.O)
+        grid.cells[1][1] = Cell(Player.X)
+        grid.cells[1][2] = Cell(Player.O)
+        grid.cells[2][0] = Cell(Player.O)
+        grid.cells[2][1] = Cell(Player.X)
+        grid.cells[2][2] = Cell(Player.O)
+
+        val isGameEnded: Boolean = grid.isGameEnded()
+        assertTrue(isGameEnded)
+    }
+
 }
