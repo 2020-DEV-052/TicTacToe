@@ -17,6 +17,8 @@ class Grid {
         return false
     }
 
+    fun areVerticalCellsIdentical() = false
+
     private fun areCellsIdentical(vararg cellsInput: Cell?): Boolean {
         val cell = cellsInput[0]
         for (i in 1 until cellsInput.size)

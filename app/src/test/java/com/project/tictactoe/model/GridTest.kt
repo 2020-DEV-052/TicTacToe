@@ -80,4 +80,45 @@ class GridTest {
         val isHorizontalSame  = grid.areCellsIdenticalInRow()
         assertFalse(isHorizontalSame)
     }
+
+    @Test
+    fun givenThreeSameVerticalCellsInFirstRow_thenReturnTrue() {
+        val cell = Cell(Player.X)
+        grid.cells[0][0] = cell
+        grid.cells[1][0] = cell
+        grid.cells[2][0] = cell
+        val isVerticalSame = grid.areVerticalCellsIdentical()
+        assertTrue(isVerticalSame)
+    }
+
+    @Test
+    fun givenThreeSameVerticalCellsInSecondRow_thenReturnTrue() {
+        val cell = Cell(Player.X)
+        grid.cells[0][1] = cell
+        grid.cells[1][1] = cell
+        grid.cells[2][1] = cell
+        val isVerticalSame = grid.areVerticalCellsIdentical()
+        assertTrue(isVerticalSame)
+    }
+
+    @Test
+    fun givenThreeSameVerticalCellsInThirdRow_thenReturnTrue() {
+        val cell = Cell(Player.X)
+        grid.cells[0][2] = cell
+        grid.cells[1][2] = cell
+        grid.cells[2][2] = cell
+        val isVerticalSame = grid.areVerticalCellsIdentical()
+        assertTrue(isVerticalSame)
+    }
+
+    @Test
+    fun givenThreeDifferentVerticalCells_thenReturnFalse() {
+        val cell = Cell(Player.X)
+        grid.cells[2][0] = cell
+        grid.cells[1][1] = cell
+        grid.cells[0][2] = cell
+        val isVerticalSame = grid.areVerticalCellsIdentical()
+        assertFalse(isVerticalSame)
+    }
+
 }
