@@ -16,7 +16,10 @@ class GameGridViewModel : ViewModel() {
             grid.cells[row][column] = Cell(grid.currentPlayer)
             val tag = StringUtility.joinNumbers(row, column)
             cells[tag] = grid.currentPlayer.name
-            grid.switchPlayer()
+
+            if (!grid.isGameEnded()) {
+                grid.switchPlayer()
+            }
         }
     }
 
@@ -25,5 +28,5 @@ class GameGridViewModel : ViewModel() {
         cells = ObservableArrayMap()
     }
 
-    fun getWinner() {}
+    fun getWinner() = grid.winner
 }
