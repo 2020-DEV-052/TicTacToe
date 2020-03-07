@@ -231,4 +231,41 @@ class GridTest {
         assertTrue(isGameEnded)
     }
 
+    @Test
+    fun givenGameEnded_whenPlayerIsX_thenDeclareTheWinner() {
+        val cell = Cell(Player.X)
+        grid.cells[0][0] = cell
+        grid.cells[1][1] = cell
+        grid.cells[2][2] = cell
+        grid.isGameEnded()
+        assertEquals(Player.X, grid.winner.value)
+    }
+
+    @Test
+    fun givenGameEnded_whenPlayerIsO_thenDeclareTheWinner() {
+        val cell = Cell(Player.O)
+        grid.cells[0][2] = cell
+        grid.cells[1][1] = cell
+        grid.cells[2][2] = cell
+        grid.isGameEnded()
+        assertEquals(Player.O, grid.winner.value)
+    }
+
+    @Test
+    fun givenGameEnded_whenNoneIsWinner_thenDrawGame(){
+        grid.cells[0][0] = Cell(Player.X)
+        grid.cells[0][1] = Cell(Player.O)
+        grid.cells[0][2] = Cell(Player.X)
+        grid.cells[1][0] = Cell(Player.O)
+        grid.cells[1][1] = Cell(Player.X)
+        grid.cells[1][2] = Cell(Player.O)
+        grid.cells[2][0] = Cell(Player.O)
+        grid.cells[2][1] = Cell(Player.X)
+        grid.cells[2][2] = Cell(Player.O)
+
+        grid.isGameEnded()
+        assertEquals(Player.NONE, grid.winner.value)
+    }
+
+
 }

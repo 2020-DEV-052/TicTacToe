@@ -1,9 +1,12 @@
 package com.project.tictactoe.model
 
+import androidx.lifecycle.MutableLiveData
+
 class Grid {
 
     var currentPlayer = Player.X
     var cells = Array<Array<Cell?>>(3) { arrayOfNulls(size = 3) }
+    var winner = MutableLiveData<Player>()
 
     fun switchPlayer() {
         currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
