@@ -244,9 +244,10 @@ class GridTest {
     @Test
     fun givenGameEnded_whenPlayerIsO_thenDeclareTheWinner() {
         val cell = Cell(Player.O)
+        grid.currentPlayer = Player.O
         grid.cells[0][2] = cell
         grid.cells[1][1] = cell
-        grid.cells[2][2] = cell
+        grid.cells[2][0] = cell
         grid.isGameEnded()
         assertEquals(Player.O, grid.winner.value)
     }
