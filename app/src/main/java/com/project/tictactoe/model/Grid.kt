@@ -12,7 +12,18 @@ class Grid {
         currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
     }
 
-    fun isGameEnded() = areCellsIdenticalInRow() || areVerticalCellsIdentical() || areDiagonalCellsIdentical() || isBoardFilledWithNoResult()
+    fun isGameEnded(): Boolean {
+        if (areCellsIdenticalInRow() || areVerticalCellsIdentical() || areDiagonalCellsIdentical()){
+            winner.value = currentPlayer
+            return true
+        }
+
+        if (isBoardFilledWithNoResult()) {
+            winner.value = Player.NONE
+            return true
+        }
+        return false
+    }
 
     fun isBoardFilledWithNoResult() = cells.all { it.all {  it != null }}
 

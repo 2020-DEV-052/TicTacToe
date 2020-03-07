@@ -1,12 +1,18 @@
 package com.project.tictactoe.model
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import org.junit.Assert.*
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
 class GridTest {
 
     lateinit var grid: Grid
+
+    @Rule
+    @JvmField
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Before
     fun setUp() {
