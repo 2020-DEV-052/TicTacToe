@@ -44,8 +44,7 @@ class GridTest {
         grid.cells[0][0] = cell
         grid.cells[0][1] = cell
         grid.cells[0][2] = cell
-        val isHorizontalSame: Boolean = grid.areCellsIdenticalInRow()
-        assertTrue(isHorizontalSame)
+        assertTrue(grid.areHorizontalCellsIdentical())
     }
 
     @Test
@@ -54,8 +53,7 @@ class GridTest {
         grid.cells[1][0] = cell
         grid.cells[1][1] = cell
         grid.cells[1][2] = cell
-        val isHorizontalSame = grid.areCellsIdenticalInRow()
-        assertTrue(isHorizontalSame)
+        assertTrue(grid.areHorizontalCellsIdentical())
     }
 
     @Test
@@ -64,8 +62,7 @@ class GridTest {
         grid.cells[2][0] = cell
         grid.cells[2][1] = cell
         grid.cells[2][2] = cell
-        val isHorizontalSame = grid.areCellsIdenticalInRow()
-        assertTrue(isHorizontalSame)
+        assertTrue(grid.areHorizontalCellsIdentical())
     }
 
     @Test
@@ -73,8 +70,7 @@ class GridTest {
         grid.cells[0][0] = null
         grid.cells[0][1] = null
         grid.cells[0][2] = null
-        val hasGameEnded = grid.areCellsIdenticalInRow()
-        assertFalse(hasGameEnded)
+        assertFalse(grid.areHorizontalCellsIdentical())
     }
 
     @Test
@@ -82,9 +78,8 @@ class GridTest {
         val cell = Cell(Player.X)
         grid.cells[2][0] = cell
         grid.cells[1][1] = cell
-        grid.cells[0][2] = cell
-        val isHorizontalSame  = grid.areCellsIdenticalInRow()
-        assertFalse(isHorizontalSame)
+        grid.cells[0][2] = Cell(Player.O)
+        assertFalse(grid.areHorizontalCellsIdentical())
     }
 
     @Test
@@ -93,8 +88,7 @@ class GridTest {
         grid.cells[0][0] = cell
         grid.cells[1][0] = cell
         grid.cells[2][0] = cell
-        val isVerticalSame = grid.areVerticalCellsIdentical()
-        assertTrue(isVerticalSame)
+        assertTrue(grid.areVerticalCellsIdentical())
     }
 
     @Test
@@ -103,8 +97,7 @@ class GridTest {
         grid.cells[0][1] = cell
         grid.cells[1][1] = cell
         grid.cells[2][1] = cell
-        val isVerticalSame = grid.areVerticalCellsIdentical()
-        assertTrue(isVerticalSame)
+        assertTrue(grid.areVerticalCellsIdentical())
     }
 
     @Test
@@ -113,8 +106,7 @@ class GridTest {
         grid.cells[0][2] = cell
         grid.cells[1][2] = cell
         grid.cells[2][2] = cell
-        val isVerticalSame = grid.areVerticalCellsIdentical()
-        assertTrue(isVerticalSame)
+        assertTrue(grid.areVerticalCellsIdentical())
     }
 
     @Test
@@ -122,9 +114,8 @@ class GridTest {
         val cell = Cell(Player.X)
         grid.cells[2][0] = cell
         grid.cells[1][1] = cell
-        grid.cells[0][2] = cell
-        val isVerticalSame = grid.areVerticalCellsIdentical()
-        assertFalse(isVerticalSame)
+        grid.cells[0][2] = Cell(Player.O)
+        assertFalse(grid.areVerticalCellsIdentical())
     }
 
     @Test
@@ -132,28 +123,25 @@ class GridTest {
         grid.cells[0][2] = null
         grid.cells[1][2] = null
         grid.cells[2][2] = null
-        val areVerticalCellsNull = grid.areVerticalCellsIdentical()
-        assertFalse(areVerticalCellsNull)
+        assertFalse(grid.areVerticalCellsIdentical())
     }
 
     @Test
-    fun givenThreeSameDiagonalCellsLeftSide_thenReturnTrue() {
+    fun givenThreeSameDiagonalCells_whenLeftToRight_thenReturnTrue() {
         val cell = Cell(Player.X)
         grid.cells[0][0] = cell
         grid.cells[1][1] = cell
         grid.cells[2][2] = cell
-        val isDiagonal = grid.areDiagonalCellsIdentical()
-        assertTrue(isDiagonal)
+        assertTrue(grid.areDiagonalCellsIdentical())
     }
 
     @Test
-    fun givenThreeSameDiagonalCellsRightSide_thenReturnTrue() {
+    fun givenThreeSameDiagonalCells_whenRightToLeft_thenReturnTrue() {
         val cell = Cell(Player.X)
         grid.cells[0][2] = cell
         grid.cells[1][1] = cell
         grid.cells[2][0] = cell
-        val isDiagonal = grid.areDiagonalCellsIdentical()
-        assertTrue(isDiagonal)
+        assertTrue(grid.areDiagonalCellsIdentical())
     }
 
     @Test
@@ -161,9 +149,8 @@ class GridTest {
         val cell = Cell(Player.X)
         grid.cells[2][1] = cell
         grid.cells[1][1] = cell
-        grid.cells[0][2] = cell
-        val isDiagonal = grid.areDiagonalCellsIdentical()
-        assertFalse(isDiagonal)
+        grid.cells[0][2] = Cell(Player.O)
+        assertFalse(grid.areDiagonalCellsIdentical())
     }
 
     @Test
@@ -171,8 +158,7 @@ class GridTest {
         grid.cells[0][2] = null
         grid.cells[1][1] = null
         grid.cells[2][0] = null
-        val areDiagonalCellsNull = grid.areVerticalCellsIdentical()
-        assertFalse(areDiagonalCellsNull)
+        assertFalse(grid.areDiagonalCellsIdentical())
     }
 
     @Test
@@ -181,8 +167,7 @@ class GridTest {
         grid.cells[0][0] = cell
         grid.cells[0][1] = cell
         grid.cells[0][2] = cell
-        val hasGameEnded = grid.isGameEnded()
-        assertTrue(hasGameEnded)
+        assertTrue(grid.hasGameEnded())
     }
 
     @Test
@@ -191,8 +176,7 @@ class GridTest {
         grid.cells[0][0] = cell
         grid.cells[1][0] = cell
         grid.cells[2][0] = cell
-        val hasGameEnded = grid.isGameEnded()
-        assertTrue(hasGameEnded)
+        assertTrue(grid.hasGameEnded())
     }
 
     @Test
@@ -201,8 +185,7 @@ class GridTest {
         grid.cells[0][0] = cell
         grid.cells[1][1] = cell
         grid.cells[2][2] = cell
-        val hasGameEnded = grid.isGameEnded()
-        assertTrue(hasGameEnded)
+        assertTrue(grid.hasGameEnded())
     }
 
     @Test
@@ -216,9 +199,7 @@ class GridTest {
         grid.cells[2][0] = Cell(Player.X)
         grid.cells[2][1] = Cell(Player.O)
         grid.cells[2][2] = Cell(Player.X)
-
-        val isBoardFilled = grid.isBoardFilledWithNoResult()
-        assertTrue(isBoardFilled)
+        assertTrue(grid.areAllCellsFilled())
     }
 
     @Test
@@ -226,15 +207,13 @@ class GridTest {
         grid.cells[0][0] = Cell(Player.X)
         grid.cells[0][1] = Cell(Player.O)
         grid.cells[0][2] = Cell(Player.X)
-        grid.cells[1][0] = Cell(Player.O)
+        grid.cells[1][0] = Cell(Player.X)
         grid.cells[1][1] = Cell(Player.X)
         grid.cells[1][2] = Cell(Player.O)
         grid.cells[2][0] = Cell(Player.O)
         grid.cells[2][1] = Cell(Player.X)
         grid.cells[2][2] = Cell(Player.O)
-
-        val isGameEnded: Boolean = grid.isGameEnded()
-        assertTrue(isGameEnded)
+        assertTrue(grid.hasGameEnded())
     }
 
     @Test
@@ -243,7 +222,7 @@ class GridTest {
         grid.cells[0][0] = cell
         grid.cells[1][1] = cell
         grid.cells[2][2] = cell
-        grid.isGameEnded()
+        grid.hasGameEnded()
         assertEquals(Player.X, grid.winner.value)
     }
 
@@ -254,7 +233,7 @@ class GridTest {
         grid.cells[0][2] = cell
         grid.cells[1][1] = cell
         grid.cells[2][0] = cell
-        grid.isGameEnded()
+        grid.hasGameEnded()
         assertEquals(Player.O, grid.winner.value)
     }
 
@@ -270,7 +249,7 @@ class GridTest {
         grid.cells[2][1] = Cell(Player.X)
         grid.cells[2][2] = Cell(Player.O)
 
-        grid.isGameEnded()
+        grid.hasGameEnded()
         assertEquals(Player.NONE, grid.winner.value)
     }
 

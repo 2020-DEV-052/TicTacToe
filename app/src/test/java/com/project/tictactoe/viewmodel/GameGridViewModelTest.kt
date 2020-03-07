@@ -84,7 +84,5 @@ class GameGridViewModelTest {
         viewModel.onCellClick(2,1)
         viewModel.getWinner()
         assertEquals(Player.NONE, viewModel.grid.winner.value)
-
     }
-
 }
