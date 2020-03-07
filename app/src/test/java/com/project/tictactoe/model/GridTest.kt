@@ -1,7 +1,6 @@
 package com.project.tictactoe.model
 
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 
@@ -61,5 +60,24 @@ class GridTest {
         grid.cells[2][2] = cell
         val isHorizontalSame = grid.areCellsIdenticalInRow()
         assertTrue(isHorizontalSame)
+    }
+
+    @Test
+    fun givenThreeNullHorizontalCells_thenReturnFalse() {
+        grid.cells[0][0] = null
+        grid.cells[0][1] = null
+        grid.cells[0][2] = null
+        val hasGameEnded = grid.areCellsIdenticalInRow()
+        assertFalse(hasGameEnded)
+    }
+
+    @Test
+    fun givenThreeDifferentHorizontalCells_thenReturnFalse() {
+        val cell = Cell(Player.X)
+        grid.cells[2][0] = cell
+        grid.cells[1][1] = cell
+        grid.cells[0][2] = cell
+        val isHorizontalSame  = grid.areCellsIdenticalInRow()
+        assertFalse(isHorizontalSame)
     }
 }
