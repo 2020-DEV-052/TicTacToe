@@ -20,7 +20,7 @@ class Grid {
     private fun areCellsIdentical(vararg cellsInput: Cell?): Boolean {
         val cell = cellsInput[0]
         for (i in 1 until cellsInput.size)
-            if (cell != cellsInput[i])
+            if (cell == null || cell != cellsInput[i])
                 return false
         return true
     }
