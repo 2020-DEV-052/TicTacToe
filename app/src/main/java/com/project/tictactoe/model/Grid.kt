@@ -1,3 +1,7 @@
 package com.project.tictactoe.model
 
-class Grid
+class Grid {
+
+    var currentPlayer : Player? = null
+
+}
