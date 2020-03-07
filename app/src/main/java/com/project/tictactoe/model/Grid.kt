@@ -17,7 +17,14 @@ class Grid {
         return false
     }
 
-    fun areVerticalCellsIdentical() = false
+    fun areVerticalCellsIdentical() : Boolean {
+        for (i in 0 until BOARD_SIZE)
+            if (areCellsIdentical(cells[0][i], cells[1][i], cells[2][i])) {
+                return true
+            }
+
+        return false
+    }
 
     private fun areCellsIdentical(vararg cellsInput: Cell?): Boolean {
         val cell = cellsInput[0]
