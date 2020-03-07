@@ -121,4 +121,52 @@ class GridTest {
         assertFalse(isVerticalSame)
     }
 
+    @Test
+    fun givenThreeNullVerticalCells_thenReturnFalse() {
+        grid.cells[0][2] = null
+        grid.cells[1][2] = null
+        grid.cells[2][2] = null
+        val areVerticalCellsNull = grid.areVerticalCellsIdentical()
+        assertFalse(areVerticalCellsNull)
+    }
+
+    @Test
+    fun givenThreeSameDiagonalCellsLeftSide_thenReturnTrue() {
+        val cell = Cell(Player.X)
+        grid.cells[0][0] = cell
+        grid.cells[1][1] = cell
+        grid.cells[2][2] = cell
+        val isDiagonal = grid.areDiagonalCellsIdentical()
+        assertTrue(isDiagonal)
+    }
+
+    @Test
+    fun givenThreeSameDiagonalCellsRightSide_thenReturnTrue() {
+        val cell = Cell(Player.X)
+        grid.cells[0][2] = cell
+        grid.cells[1][1] = cell
+        grid.cells[2][0] = cell
+        val isDiagonal = grid.areDiagonalCellsIdentical()
+        assertTrue(isDiagonal)
+    }
+
+    @Test
+    fun givenThreeDifferentDiagonalCells_thenReturnFalse() {
+        val cell = Cell(Player.X)
+        grid.cells[2][1] = cell
+        grid.cells[1][1] = cell
+        grid.cells[0][2] = cell
+        val isDiagonal = grid.areDiagonalCellsIdentical()
+        assertFalse(isDiagonal)
+    }
+
+    @Test
+    fun givenThreeNullDiagonalCells_thenReturnFalse() {
+        grid.cells[0][2] = null
+        grid.cells[1][1] = null
+        grid.cells[2][0] = null
+        val areDiagonalCellsNull = grid.areVerticalCellsIdentical()
+        assertFalse(areDiagonalCellsNull)
+    }
+
 }
