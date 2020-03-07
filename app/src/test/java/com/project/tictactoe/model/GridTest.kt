@@ -169,4 +169,34 @@ class GridTest {
         assertFalse(areDiagonalCellsNull)
     }
 
+    @Test
+    fun givenThreeSameHorizontalCells_thenGameEnded() {
+        val cell = Cell(Player.X)
+        grid.cells[0][0] = cell
+        grid.cells[0][1] = cell
+        grid.cells[0][2] = cell
+        val hasGameEnded = grid.isGameEnded()
+        assertTrue(hasGameEnded)
+    }
+
+    @Test
+    fun givenThreeSameVerticalCells_thenEndGame() {
+        val cell = Cell(Player.X)
+        grid.cells[0][0] = cell
+        grid.cells[1][0] = cell
+        grid.cells[2][0] = cell
+        val hasGameEnded = grid.isGameEnded()
+        assertTrue(hasGameEnded)
+    }
+
+    @Test
+    fun givenThreeSameDiagonalCells_thenEndGame() {
+        val cell = Cell(Player.X)
+        grid.cells[0][0] = cell
+        grid.cells[1][1] = cell
+        grid.cells[2][2] = cell
+        val hasGameEnded = grid.isGameEnded()
+        assertTrue(hasGameEnded)
+    }
+
 }
