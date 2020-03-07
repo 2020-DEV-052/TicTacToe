@@ -26,7 +26,9 @@ class Grid {
         return false
     }
 
-    fun areDiagonalCellsIdentical() = false
+    fun areDiagonalCellsIdentical() =
+        areCellsIdentical(cells[0][0], cells[1][1], cells[2][2]) ||
+                areCellsIdentical(cells[0][2], cells[1][1], cells[2][0])
 
     private fun areCellsIdentical(vararg cellsInput: Cell?): Boolean {
         val cell = cellsInput[0]
