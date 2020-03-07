@@ -27,4 +27,18 @@ class GameGridViewModelTest {
         assertEquals("O", viewModel.cells["20"])
     }
 
+    @Test
+    fun givenCellOccupied_whenSameCellClicked_thenDoNotOverride() {
+        viewModel.onCellClick(0,0)
+        viewModel.onCellClick(0,0)
+        assertEquals("X", viewModel.cells["00"])
+    }
+
+    @Test
+    fun givenCellOccupied_whenSameCellClicked_thenDoNotChangePlayer() {
+        viewModel.onCellClick(0,0)
+        viewModel.onCellClick(0,0)
+        assertEquals("O", viewModel.grid.currentPlayer.name)
+    }
+
 }
