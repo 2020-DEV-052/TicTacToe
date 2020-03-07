@@ -8,4 +8,7 @@ class Grid {
     fun switchPlayer() {
         currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
     }
+
+    fun areCellsIdenticalInRow() = false
+
 }
