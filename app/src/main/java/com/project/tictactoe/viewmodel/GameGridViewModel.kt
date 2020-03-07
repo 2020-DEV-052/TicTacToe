@@ -13,6 +13,7 @@ class GameGridViewModel : ViewModel() {
     fun onCellClick(row: Int, column: Int) {
         val tag = StringUtility.joinNumbers(row, column)
         cells[tag] = grid.currentPlayer.name
+        grid.switchPlayer()
     }
 
     fun initializeGame() {
