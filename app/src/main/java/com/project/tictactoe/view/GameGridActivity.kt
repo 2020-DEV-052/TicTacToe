@@ -1,7 +1,7 @@
 package com.project.tictactoe.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.project.tictactoe.R
 
 class GameGridActivity : AppCompatActivity() {
@@ -10,4 +10,5 @@ class GameGridActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_grid)
     }
+
 }
