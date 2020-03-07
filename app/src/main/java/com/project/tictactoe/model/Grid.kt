@@ -9,9 +9,9 @@ class Grid {
         currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
     }
 
-    fun isGameEnded() = areCellsIdenticalInRow() || areVerticalCellsIdentical() || areDiagonalCellsIdentical()
+    fun isGameEnded() = areCellsIdenticalInRow() || areVerticalCellsIdentical() || areDiagonalCellsIdentical() || isBoardFilledWithNoResult()
 
-    fun isBoardFilledWithNoResult() = false
+    fun isBoardFilledWithNoResult() = cells.all { it.all {  it != null }}
 
     fun areCellsIdenticalInRow() : Boolean {
         for (i in 0 until BOARD_SIZE)
