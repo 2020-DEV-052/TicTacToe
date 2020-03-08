@@ -1,9 +1,10 @@
 package com.project.tictactoe.view
 
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.RootMatchers.isDialog
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.project.tictactoe.R
 import org.junit.Rule
@@ -18,109 +19,145 @@ class GameGridActivityTest{
     @Test
     fun givenGameStarted_whenUserTaps_testIfButtonTapped_andTextDisplayed() {
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_00)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
-            .check(ViewAssertions.matches(ViewMatchers.withText("X")))
+        onView(withId(R.id.cell_00)).perform(click())
+            .check(matches(isDisplayed()))
+            .check(matches(withText("X")))
     }
 
     @Test
     fun givenHorizontalCellsAreSame_thenWinnerAlertDisplayed() {
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_00)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_00)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_10)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_10)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_02)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_02)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_11)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_11)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_01)).perform(ViewActions.click())
+        onView(withId(R.id.cell_01)).perform(click())
 
-        Espresso.onView(ViewMatchers.withText("X has won!"))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withText("X has won!"))
+            .check(matches(isDisplayed()))
     }
 
     @Test
     fun givenVerticalCellsAreSame_thenWinnerAlertDisplayed() {
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_22)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_22)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_00)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_00)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_11)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_11)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_10)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_10)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_12)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_12)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_20)).perform(ViewActions.click())
+        onView(withId(R.id.cell_20)).perform(click())
 
-        Espresso.onView(ViewMatchers.withText("O has won!"))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withText("O has won!"))
+            .check(matches(isDisplayed()))
     }
 
     @Test
     fun givenDiagonalCellsAreSame_thenWinnerAlertDisplayed() {
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_20)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_20)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_00)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_00)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_11)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_11)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_10)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_10)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_02)).perform(ViewActions.click())
+        onView(withId(R.id.cell_02)).perform(click())
 
-        Espresso.onView(ViewMatchers.withText("X has won!"))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withText("X has won!"))
+            .check(matches(isDisplayed()))
     }
 
 
     @Test
     fun givenGameIsDrawn_thenGameDrawnIsDisplayed() {
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_11)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_11)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_01)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_01)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_02)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_02)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_20)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_20)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_10)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_10)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_12)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_12)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_00)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_00)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_22)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withId(R.id.cell_22)).perform(click())
+            .check(matches(isDisplayed()))
 
-        Espresso.onView(ViewMatchers.withId(R.id.cell_21)).perform(ViewActions.click())
+        onView(withId(R.id.cell_21)).perform(click())
 
-        Espresso.onView(ViewMatchers.withText("Game Drawn"))
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
+        onView(withText("Game Drawn"))
+            .check(matches(isDisplayed()))
+    }
+
+    @Test
+    fun givenAlertIsDisplayed_whenUserTapsPlayAgain_thenResetGrid() {
+
+        onView(withId(R.id.cell_00)).perform(click())
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.cell_10)).perform(click())
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.cell_02)).perform(click())
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.cell_11)).perform(click())
+            .check(matches(isDisplayed()))
+
+        onView(withId(R.id.cell_01)).perform(click())
+
+        onView(withText("X has won!"))
+            .check(matches(isDisplayed()))
+
+        onView(withText("Play Again")).inRoot(isDialog())
+            .check(matches(isDisplayed())).perform(click())
+
+        onView(withId(R.id.cell_00)).check(matches(withText("")))
+        onView(withId(R.id.cell_01)).check(matches(withText("")))
+        onView(withId(R.id.cell_02)).check(matches(withText("")))
+        onView(withId(R.id.cell_10)).check(matches(withText("")))
+        onView(withId(R.id.cell_11)).check(matches(withText("")))
+        onView(withId(R.id.cell_12)).check(matches(withText("")))
+        onView(withId(R.id.cell_20)).check(matches(withText("")))
+        onView(withId(R.id.cell_21)).check(matches(withText("")))
+        onView(withId(R.id.cell_22)).check(matches(withText("")))
+
+
     }
 
 }
