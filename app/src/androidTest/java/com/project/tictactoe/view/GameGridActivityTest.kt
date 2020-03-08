@@ -118,7 +118,6 @@ class GameGridActivityTest{
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
         Espresso.onView(ViewMatchers.withId(R.id.cell_21)).perform(ViewActions.click())
-            .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
 
         Espresso.onView(ViewMatchers.withText("Game Drawn"))
             .check(ViewAssertions.matches(ViewMatchers.isDisplayed()))
