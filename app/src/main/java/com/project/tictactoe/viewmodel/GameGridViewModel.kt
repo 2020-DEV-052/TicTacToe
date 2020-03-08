@@ -9,7 +9,7 @@ import com.project.tictactoe.utility.StringUtility.Companion.joinNumbers
 /**
  * This is the ViewModel class that keeps track of the UI related data
  * @property grid works as repository to keep track of moves of the two players
- * @property cells is an ObservableArrayMap that saves the state (X/O) for each cell to notify the UI
+ * @property cells is an ObservableArrayMap that saves the text (X/O) for each cell to notify the UI
  */
 
 class GameGridViewModel : ViewModel() {
@@ -30,6 +30,7 @@ class GameGridViewModel : ViewModel() {
      * This method is triggered by UI when a button on the grid is tapped
      * @param row
      * @param column
+     * Checks if the cells tapped is not already occupied by making a null check
      * Switches player after each move if game has not ended
      * Saves the value of active player in the ObservableArrayMap
      */
@@ -46,7 +47,7 @@ class GameGridViewModel : ViewModel() {
     }
 
     /**
-     * This method observes the winner from grid repository and notifies UI
+     * This method observes the winner from grid model and notifies UI
      */
     fun getWinner() = grid.winner
 }

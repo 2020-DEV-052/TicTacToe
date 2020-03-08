@@ -90,7 +90,6 @@ class GameGridActivityTest{
             .check(matches(isDisplayed()))
     }
 
-
     @Test
     fun givenGameIsDrawn_thenGameDrawnIsDisplayed() {
 
@@ -147,17 +146,29 @@ class GameGridActivityTest{
         onView(withText("Play Again")).inRoot(isDialog())
             .check(matches(isDisplayed())).perform(click())
 
-        onView(withId(R.id.cell_00)).check(matches(withText("")))
-        onView(withId(R.id.cell_01)).check(matches(withText("")))
-        onView(withId(R.id.cell_02)).check(matches(withText("")))
+        onView(withId(R.id.cell_00))
+            .check(matches(withText("")))
+
+        onView(withId(R.id.cell_01))
+            .check(matches(withText("")))
+
+        onView(withId(R.id.cell_02))
+            .check(matches(withText("")))
         onView(withId(R.id.cell_10)).check(matches(withText("")))
-        onView(withId(R.id.cell_11)).check(matches(withText("")))
-        onView(withId(R.id.cell_12)).check(matches(withText("")))
-        onView(withId(R.id.cell_20)).check(matches(withText("")))
-        onView(withId(R.id.cell_21)).check(matches(withText("")))
-        onView(withId(R.id.cell_22)).check(matches(withText("")))
 
+        onView(withId(R.id.cell_11))
+            .check(matches(withText("")))
 
+        onView(withId(R.id.cell_12))
+            .check(matches(withText("")))
+
+        onView(withId(R.id.cell_20))
+            .check(matches(withText("")))
+
+        onView(withId(R.id.cell_21))
+            .check(matches(withText("")))
+
+        onView(withId(R.id.cell_22))
+            .check(matches(withText("")))
     }
-
 }

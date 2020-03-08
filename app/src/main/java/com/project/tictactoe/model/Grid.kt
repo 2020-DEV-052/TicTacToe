@@ -40,7 +40,9 @@ class Grid {
             winner.value = Player.NONE
             true
         }
-         else -> false
+         else -> {
+             false
+         }
     }
 
     /**
@@ -77,11 +79,11 @@ class Grid {
      * Method to check if the cells in input array are identical
      * @param cellsInput
      * @return boolean
-     * Compares the first element with rest of the elements in input array
+     * Compares the first element with rest of the two elements in input array
      * Uses none() testing predicate that returns true if cells in input array are not null and are identical
      */
     private fun areCellsIdentical(vararg cellsInput: Cell?) =
-        (1 until cellsInput.size).none { cellsInput[0] == null || cellsInput[0] != cellsInput[it]}
+        (1 until cellsInput.size).none { cellsInput[0] == null || cellsInput[0] != cellsInput[it] }
 
 
     /**
@@ -89,5 +91,5 @@ class Grid {
      * @return boolean
      * Uses all() testing predicate that returns true if none of the cells in grid are empty
      */
-    fun areAllCellsFilled() = cells.all { it.all {  it != null }}
+    fun areAllCellsFilled() = cells.all { it.all {  it != null } }
 }

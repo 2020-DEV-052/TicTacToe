@@ -28,16 +28,14 @@ class GameGridActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(GameGridViewModel::class.java)
         viewModel.initializeGame()
         activityGridBinding.viewModel = viewModel
-        viewModel.getWinner().observe(this, Observer<Player> { showWinner(it?.name) })
+        viewModel.getWinner().observe(this, Observer<Player> { showWinner(it.name) })
 
     }
 
     @VisibleForTesting
-    private fun showWinner (winner: String?){
+    private fun showWinner(winner: String) {
         AlertDialog.Builder(this, R.style.AlertDialogTheme)
-            .setTitle(
-                if(winner == Player.NONE.name) getString(R.string.game_drawn)
-                else getString(R.string.winner_title, winner))
+            .setTitle(this.getTitle(winner))
             .setCancelable(false)
             .setPositiveButton(R.string.done) { _, _ ->
                 startGame()
@@ -45,4 +43,6 @@ class GameGridActivity : AppCompatActivity() {
             .show()
     }
 
+    private fun getTitle(winner: String) =
+         if (winner == Player.NONE.name) getString(R.string.game_drawn) else getString(R.string.winner_title, winner)
 }

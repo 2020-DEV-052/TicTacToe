@@ -248,7 +248,6 @@ class GridTest {
         grid.cells[2][0] = Cell(Player.O)
         grid.cells[2][1] = Cell(Player.X)
         grid.cells[2][2] = Cell(Player.O)
-
         grid.hasGameEnded()
         assertEquals(Player.NONE, grid.winner.value)
     }
