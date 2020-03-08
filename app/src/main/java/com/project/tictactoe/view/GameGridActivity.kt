@@ -39,7 +39,9 @@ class GameGridActivity : AppCompatActivity() {
                 if(winner == Player.NONE.name) getString(R.string.game_drawn)
                 else getString(R.string.winner_title, winner))
             .setCancelable(false)
-            .setPositiveButton(R.string.done, null)
+            .setPositiveButton(R.string.done) { _, _ ->
+                startGame()
+            }
             .show()
     }
 
