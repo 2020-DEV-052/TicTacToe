@@ -1,6 +1,8 @@
 package com.project.tictactoe.view
 
 import android.os.Bundle
+import androidx.annotation.VisibleForTesting
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -26,8 +28,17 @@ class GameGridActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(GameGridViewModel::class.java)
         viewModel.initializeGame()
         activityGridBinding.viewModel = viewModel
-        viewModel.getWinner().observe(this, Observer<Player> {  })
+        viewModel.getWinner().observe(this, Observer<Player> { showWinner(it?.name) })
 
+    }
+
+    @VisibleForTesting
+    private fun showWinner (winner: String?){
+        AlertDialog.Builder(this, R.style.AlertDialogTheme)
+            .setTitle(getString(R.string.winner_title, winner))
+            .setCancelable(false)
+            .setPositiveButton(R.string.done, null)
+            .show()
     }
 
 }

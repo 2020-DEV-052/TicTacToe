@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="winner_title">%1$s has won!</string>
+    <string name="done">Play Again</string>
 </resources>
